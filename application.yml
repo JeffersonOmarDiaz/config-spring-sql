@@ -1,0 +1,38 @@
+server:
+  port: 8888
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/partto
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    # PostgreSQL
+  # datasource:
+  #   url: jdbc:postgresql://localhost:5432/your_database_name
+  #   username: your_database_username
+  #   password: your_database_password
+  #   driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
